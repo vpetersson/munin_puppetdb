@@ -21,20 +21,19 @@ if len(sys.argv) == 2 and sys.argv[1] == "autoconf":
     print 'yes'
 
 elif len(sys.argv) == 2 and sys.argv[1] == "config":
-    print 'graph_title PuppetDB Nodes'
+    print 'graph_title PuppetDB Resources'
     print 'graph_args --base 1000 -l 0'
-    print 'graph_vlabel number nodes'
+    print 'graph_vlabel number resources'
     print 'graph_category puppetdb'
-    print 'graph_info This graph displays the number of nodes in PuppetDB.'
-    print 'count.label puppetdb_nodes'
-    print 'count.info Nodes in PuppetDB.'
+    print 'graph_info This graph displays the number of resources in PuppetDB.'
+    print 'resource.label puppetdb_resources'
+    print 'resource.info Resources in PuppetDB.'
 
 else:
     puppetdb_url = 'http://%s:%s/v2' % (host, port)
     headers = {'Accept': 'application/json'}
-    call = requests.get(puppetdb_url + '/metrics/mbean/com.puppetlabs.puppetdb.query.population:type=default,name=num-no
-des', headers=headers)
+    call = requests.get(puppetdb_url + '/metrics/mbean/com.puppetlabs.puppetdb.query.population:type=default,name=num-resources', headers=headers)
     data = json.loads(call.content)
-    node_count = data['Value']
+    resource_count = data['Value']
 
-    print "count.value %d" % (node_count)
+    print "resource.value %d" % (resource_count)
