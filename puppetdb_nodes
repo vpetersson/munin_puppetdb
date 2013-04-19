@@ -32,8 +32,7 @@ elif len(sys.argv) == 2 and sys.argv[1] == "config":
 else:
     puppetdb_url = 'http://%s:%s/v2' % (host, port)
     headers = {'Accept': 'application/json'}
-    call = requests.get(puppetdb_url + '/metrics/mbean/com.puppetlabs.puppetdb.query.population:type=default,name=num-no
-des', headers=headers)
+    call = requests.get(puppetdb_url + '/metrics/mbean/com.puppetlabs.puppetdb.query.population:type=default,name=num-nodes', headers=headers)
     data = json.loads(call.content)
     node_count = data['Value']
 
