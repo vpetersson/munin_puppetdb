@@ -21,13 +21,13 @@ if len(sys.argv) == 2 and sys.argv[1] == "autoconf":
     print 'yes'
 
 elif len(sys.argv) == 2 and sys.argv[1] == "config":
-    print 'graph_title PuppetDB Failed to Process'
+    print 'graph_title PuppetDB Commands Failed to Process'
     print 'graph_args --base 1000 -l 0'
     print 'graph_vlabel number fatal'
     print 'graph_category puppetdb'
     print 'graph_info This graph displays the number of failed commands.'
     print 'fatal.label puppetdb_fatal'
-    print 'fatal.info Fatal PuppetDB runs.'
+    print 'fatal.info Fatal PuppetDB commands'
 
 else:
     puppetdb_url = 'http://%s:%s/v2' % (host, port)
